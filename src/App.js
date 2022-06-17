@@ -11,8 +11,6 @@ import { AboutPage } from './pages';
 import { FeedbackContext, FeedbackProvider } from './context';
 
 const App = () => {
-  const { addFeedback, deleteFeedback } = useContext(FeedbackContext);
-
   return (
     <FeedbackProvider>
       <Router>
