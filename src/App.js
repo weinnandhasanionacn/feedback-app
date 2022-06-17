@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useContext } from 'react';
 import {
   FeedbackList,
   Header,
@@ -8,7 +7,7 @@ import {
   AboutIconLink,
 } from './components';
 import { AboutPage } from './pages';
-import { FeedbackContext, FeedbackProvider } from './context';
+import { FeedbackProvider } from './context';
 
 const App = () => {
   return (
