@@ -1,4 +1,5 @@
 import Card from './Card';
 import Button from './Button';
+import Spinner from './Spinner';
 
-export { Card, Button };
+export { Card, Button, Spinner };
