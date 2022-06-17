@@ -8,28 +8,23 @@ const FeedbackForm = () => {
     useContext(FeedbackContext);
 
   const [text, setText] = useState('');
-  const [rating, setRating] = useState(10);
-  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [rating, setRating] = useState(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (feedbackEdit.edit === true) {
-      setBtnDisabled(false);
       setText(feedbackEdit.item.text);
       setRating(feedbackEdit.item.rating);
     }
   }, [feedbackEdit]);
 
   const handleTextChange = (e) => {
-    if (text === '') {
-      setBtnDisabled(true);
+    if (e.target.value === '') {
       setMessage(null);
-    } else if (text !== '' && text.trim().length < 10) {
+    } else if (e.target.value !== '' && e.target.value.trim().length < 10) {
       setMessage('Text must be at least 10 characters');
-      setBtnDisabled(true);
     } else {
       setMessage(null);
-      setBtnDisabled(false);
     }
 
     setText(e.target.value);
@@ -52,6 +47,8 @@ const FeedbackForm = () => {
     setRating(null);
   };
 
+  const disableBtn = text === '' || text.trim().length < 10 || rating === null;
+
   return (
     <Card>
       <form onSubmit={handleSubmit}>
@@ -64,7 +61,7 @@ const FeedbackForm = () => {
             value={text}
             onChange={handleTextChange}
           />
-          <Button type='submit' disabled={btnDisabled}>
+          <Button type='submit' disabled={disableBtn}>
             Send
           </Button>
         </div>

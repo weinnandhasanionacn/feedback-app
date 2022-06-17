@@ -49,11 +49,9 @@ export const FeedbackProvider = ({ children }) => {
     updateFeedback,
   };
 
-  return (
-    <FeedbackContext.Provider value={providerValue}>
-      {children}
-    </FeedbackContext.Provider>
-  );
+  const providerProps = { value: providerValue, children };
+
+  return <FeedbackContext.Provider {...providerProps} />;
 };
 
 export default FeedbackContext;
